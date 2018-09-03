@@ -4,7 +4,10 @@
 authors:
   - Asiya Shaji
 
-endpoint: /jobs/1
+init:
+  - job_create_init
+
+endpoint: /jobs/{{@response.data.id}}
 method: GET
 auth: NONE
 severity: Critical

@@ -6,6 +6,10 @@ type: ABSTRACT
 authors:
   - Asiya Shaji
 
+init:
+    - job_create_init
+
+
 endpoint: /jobs/{{@Response.data.id}}
 
 method: DELETE
