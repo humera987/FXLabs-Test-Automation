@@ -10,7 +10,7 @@ init:
   - job_create_init
 
 
-endpoint: /api/v1/runs/job/{{@Response.data.id}}
+endpoint: /runs/job/{{@Response.data.id}}
 
 method: GET
 auth: Default
