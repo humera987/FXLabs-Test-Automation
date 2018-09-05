@@ -10,7 +10,7 @@ init:
   - run_create_init
 
 
-endpoint: api/v1/runs/{{@Response.data.id}}
+endpoint: /runs/{{@Response.data.id}}
 
 method: GET
 auth: Default
