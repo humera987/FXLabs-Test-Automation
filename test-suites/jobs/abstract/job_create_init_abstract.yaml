@@ -6,7 +6,8 @@ authors:
 type: ABSTRACT
 
 init:
-  - project_create_init
+  - 
+  - project_create_github_abstract
 
 
 endpoint: /jobs
