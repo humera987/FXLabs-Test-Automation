@@ -7,9 +7,9 @@ authors:
   - Asiya Shaji
 
 init:
-     - account_create_init
-     -project_create_init
-     - job_create_init
+  - GitHub_create_init
+  - project_create_github_abstract
+  - job_create_init
 
 
 endpoint: /jobs/{{@Response.data.id}}
