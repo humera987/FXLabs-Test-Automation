@@ -7,6 +7,8 @@ authors:
 type: SUITE
 
 init:
+  - account_create_init
+  - project_create_init
   - job_create_init
 
 
