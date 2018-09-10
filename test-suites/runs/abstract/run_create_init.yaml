@@ -22,7 +22,7 @@ auth: Default
 testCases:
   - id: 1
     body: '{
-    "environment: "Default",
+                "environment: "Default",
 		"botRegion": "FXLabs/US_WEST_1",
 		"category": "",
 		"testsuite": "",
