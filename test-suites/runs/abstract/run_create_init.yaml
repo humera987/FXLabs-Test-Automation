@@ -7,10 +7,10 @@ authors:
 type: ABSTRACT
 
 init:
-  - job_create_init
+  - job_create_init_abstract
 
 
-endpoint: /api/v1/runs
+endpoint: /runs
 method: POST
 auth: Default
 
