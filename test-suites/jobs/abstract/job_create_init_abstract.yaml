@@ -5,10 +5,6 @@ authors:
 
 type: ABSTRACT
 
-init:
-  - GitHub_create_init
-  - project_create_github_abstract
-
 
 endpoint: /jobs
 method: POST
@@ -38,9 +34,6 @@ testCases:
   - "@Response.data.name == @Request.name"
   - "@Response.data.environment == @Request.enviroment"
 
-
-cleanup:
-  - job-delete
 
 tags:
   - V2
