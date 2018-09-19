@@ -8,7 +8,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "sla"
   assertions:
   - "@StatusCode == 200"
@@ -48,7 +48,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "rbac"
   assertions:
   - "@StatusCode == 403"
@@ -118,7 +118,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "sql_injection_timebound"
   assertions:
   - "@ResponseTime > 7000"
@@ -139,7 +139,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "invalid_datatype"
   assertions:
   - "@StatusCode != 401"
@@ -147,7 +147,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "special_chars "
   assertions:
   - "@StatusCode != 200"
@@ -157,7 +157,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "null_value"
   assertions:
   - "@StatusCode != 200"
@@ -167,7 +167,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "empty_value"
   assertions:
   - "@StatusCode != 200"
@@ -177,7 +177,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "negative_number"
   assertions:
   - "@StatusCode != 401"
@@ -185,7 +185,7 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
 - type: "create"
   assertions:
   - "@StatusCode != 200"
@@ -195,4 +195,4 @@ generators:
   severity: null
   database: null
   inactive: false
-  matches: []
+  matches: null
