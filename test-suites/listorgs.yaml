@@ -22,7 +22,7 @@ init:
   #- InitAbstractSuite2
 
 # Mandatory - API endpoint path.
-endpoint: /orgs
+endpoint: /org
 
 # Mandatory - Represents the API http method (GET, PUT, POST, DELETE etc)
 method: GET
@@ -39,6 +39,7 @@ headers:
 # One ore more test cases when using POST, PUT, & DELETE methods.
 # Every test-case has unique id and a body (json) properties.
 # Data-Injection in-build keywords (@Random, @RandomAlphabetic, @RandomAlphanumeric, @RandomNumeric, @Date, @RandomUUID, @Vault)
+
 
 
 
