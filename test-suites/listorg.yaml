@@ -42,6 +42,7 @@ headers:
 
 
 
+
 # Assertions - One or more.
 # All needs to be true for the test-case to pass.
 # In-build variables (@Request, @StatusCode, @ResponseHeaders, @Response, @NULL, @EMPTY, @ResponseTime, @ResponseSize, @Faker etc)
