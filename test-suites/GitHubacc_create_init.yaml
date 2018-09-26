@@ -34,7 +34,7 @@ auth: Default
 # Optional Represents request headers
 # Note: These two headers are automatically set ('Content-Type: application/json', 'Accept: application/json')
 headers:
-  #- 'Content-Type: application/json'
+  - 'Content-Type: application/json'
 
 # One ore more test cases when using POST, PUT, & DELETE methods.
 # Every test-case has unique id and a body (json) properties.
