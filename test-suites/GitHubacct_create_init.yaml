@@ -22,10 +22,10 @@ init:
   #- InitAbstractSuite2
 
 # Mandatory - API endpoint path.
-endpoint: /accounts
+endpoint: /accounts/{{@GitHubacct_create_init.Response.data}}
 
 # Mandatory - Represents the API http method (GET, PUT, POST, DELETE etc)
-method: GET
+method: PUT
 
 # Optional - What authentication to use when calling the endpoint. 'Anonymous' means no authentication is used. There is always a 'Default' auth type.
 # For more advance test-cases you can create a new auth type on your env and refer it's name here. e.g. 'Admin' etc.
@@ -41,7 +41,14 @@ headers:
 # Data-Injection in-build keywords (@Random, @RandomAlphabetic, @RandomAlphanumeric, @RandomNumeric, @Date, @RandomUUID, @Vault)
 
 testCases:
- 
+   - id: 1
+     body:
+       '{
+         "name": "Init-{{@Random | 6}}",
+         "accountType": "GitHub",
+         "accessKey": "test",
+         "secretKey": "test"
+       }'
 
 
 # Assertions - One or more.
@@ -60,7 +67,11 @@ testCases:
 
 assertions:
   - "@StatusCode == 200"
-  
+  - "@Response.errors == false"
+  - "@Response.data.name == @Request.name"
+  - "@Response.data.accountType == @Request.accountType"
+  - "@Response.data.accessKey == @Request.accessKey"
+  - "@Response.data.secretKey == EMPTY"
   #- "@ResponseSize <= 1024"
   #- "@Response.errors == false || @Response.data.errors == false"
   #- "@Response.data.name == @Request.name"
