@@ -121,9 +121,8 @@ generators:
   matches: []
 - type: "sql_injection_timebound"
   assertions:
+  - "@ResponseTime < 7000 OR @ResponseTime > 10000"
   - "@StatusCode != 404"
-  - "@ResponseTime > 7000"
-  - "@ResponseTime < 10000"
   severity: null
   database:
     name: "MySQL"
