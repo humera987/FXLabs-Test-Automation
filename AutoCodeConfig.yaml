@@ -1,6 +1,6 @@
 ---
 genPolicy: "None"
-openAPISpec: "https://13.56.210.25/v2/api-docs "
+openAPISpec: "https://13.56.210.25/v2/api-docs"
 generators:
 - type: "no_params"
   assertions:
@@ -65,24 +65,6 @@ generators:
   database: null
   inactive: false
   matches:
-  - name: "Admin access"
-    value: null
-    methods: "Post, Put, Delete"
-    denyRoles: "Writer, Reader"
-    allowRoles: "Admin"
-    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  - name: "Writer access"
-    value: null
-    methods: "Post, Put, Delete"
-    denyRoles: "Reader"
-    allowRoles: "Writer"
-    pathPatterns: "/api/v1/projects/**, /api/v1/regions/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
   - name: "Collaborator access"
     value: null
     methods: "Post, Delete"
@@ -98,6 +80,24 @@ generators:
     denyRoles: "Other"
     allowRoles: "Reader, Writer"
     pathPatterns: "/api/v1/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  - name: "Admin access"
+    value: null
+    methods: "Post, Put, Delete"
+    denyRoles: "Writer, Reader"
+    allowRoles: "Admin"
+    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  - name: "Writer access"
+    value: null
+    methods: "Post, Put, Delete"
+    denyRoles: "Reader"
+    allowRoles: "Writer"
+    pathPatterns: "/api/v1/projects/**, /api/v1/regions/**"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
@@ -204,3 +204,35 @@ generators:
   database: null
   inactive: false
   matches: []
+- type: "auth_invalid_empty"
+  assertions:
+  - "@StatusCode == 401 OR @StatusCode == 403"
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: ""
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+- type: "auth_invalid_sql"
+  assertions:
+  - "@StatusCode == 401 OR @StatusCode == 403"
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: ""
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
