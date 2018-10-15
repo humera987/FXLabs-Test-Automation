@@ -172,8 +172,8 @@ generators:
   matches: []
 - type: "invalid_datatype"
   assertions:
-  - "@StatusCode != 404"
   - "@StatusCode != 401"
+  - "@StatusCode != 404"
   severity: null
   database: null
   inactive: false
