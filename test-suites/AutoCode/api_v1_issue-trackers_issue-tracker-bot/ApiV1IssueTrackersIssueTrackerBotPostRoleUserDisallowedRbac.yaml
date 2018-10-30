@@ -14,14 +14,14 @@ headers:
 - "Content-Type: application/json"
 testCases:
 - id: 1
-  body: "{\n  'account' : {\n    'accountType' : 'AWS',\n    'createdBy' : null,\n\
-    \    'createdDate' : null,\n    'id' : null,\n    'inactive' : null,\n    'modifiedBy'\
-    \ : null,\n    'modifiedDate' : null,\n    'name' : null,\n    'org' : {\n   \
-    \   'createdBy' : null,\n      'createdDate' : null,\n      'id' : null,\n   \
-    \   'inactive' : null,\n      'modifiedBy' : null,\n      'modifiedDate' : null,\n\
-    \      'name' : null,\n      'version' : null\n    },\n    'region' : null,\n\
-    \    'version' : null\n  },\n  'createdBy' : null,\n  'createdDate' : null,\n\
-    \  'description' : null,\n  'id' : null,\n  'inactive' : null,\n  'modifiedBy'\
+  body: "{\n  'account' : {\n    'accountType' : 'Microsoft_TFS_Git',\n    'createdBy'\
+    \ : null,\n    'createdDate' : null,\n    'id' : null,\n    'inactive' : null,\n\
+    \    'modifiedBy' : null,\n    'modifiedDate' : null,\n    'name' : null,\n  \
+    \  'org' : {\n      'createdBy' : null,\n      'createdDate' : null,\n      'id'\
+    \ : null,\n      'inactive' : null,\n      'modifiedBy' : null,\n      'modifiedDate'\
+    \ : null,\n      'name' : null,\n      'version' : null\n    },\n    'region'\
+    \ : null,\n    'version' : null\n  },\n  'createdBy' : null,\n  'createdDate'\
+    \ : null,\n  'description' : null,\n  'id' : null,\n  'inactive' : null,\n  'modifiedBy'\
     \ : null,\n  'modifiedDate' : null,\n  'name' : null,\n  'opts' : [ ],\n  'org'\
     \ : {\n    'createdBy' : null,\n    'createdDate' : null,\n    'id' : null,\n\
     \    'inactive' : null,\n    'modifiedBy' : null,\n    'modifiedDate' : null,\n\
@@ -29,8 +29,8 @@ testCases:
     \ : null,\n  'prop3' : null,\n  'prop4' : null,\n  'prop5' : null,\n  'skill'\
     \ : {\n    'createdBy' : null,\n    'createdDate' : null,\n    'id' : null,\n\
     \    'inactive' : null,\n    'modifiedBy' : null,\n    'modifiedDate' : null,\n\
-    \    'name' : null,\n    'version' : null\n  },\n  'state' : 'FAILED',\n  'version'\
-    \ : null,\n  'visibility' : 'ORG_PUBLIC'\n}"
+    \    'name' : null,\n    'version' : null\n  },\n  'state' : 'DELETING',\n  'version'\
+    \ : null,\n  'visibility' : 'PRIVATE'\n}"
   inactive: false
 assertions:
 - "@StatusCode == 401 OR @StatusCode == 403"

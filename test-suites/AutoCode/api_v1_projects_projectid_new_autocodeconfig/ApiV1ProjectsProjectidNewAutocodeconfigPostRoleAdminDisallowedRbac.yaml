@@ -17,7 +17,7 @@ testCases:
   body: "{\n  'createdBy' : null,\n  'createdDate' : null,\n  'genPolicy' : 'Create',\n\
     \  'generators' : [ ],\n  'id' : null,\n  'inactive' : null,\n  'modifiedBy' :\
     \ null,\n  'modifiedDate' : null,\n  'openAPISpec' : null,\n  'project' : {\n\
-    \    'account' : {\n      'accountType' : 'AZURE',\n      'createdBy' : null,\n\
+    \    'account' : {\n      'accountType' : 'Local',\n      'createdBy' : null,\n\
     \      'createdDate' : null,\n      'id' : null,\n      'inactive' : null,\n \
     \     'modifiedBy' : null,\n      'modifiedDate' : null,\n      'name' : null,\n\
     \      'org' : {\n        'createdBy' : null,\n        'createdDate' : null,\n\
