@@ -17,8 +17,8 @@ testCases:
   body: "{\n  'confirmPassword' : null,\n  'createdBy' : null,\n  'createdDate' :\
     \ null,\n  'email' : null,\n  'id' : null,\n  'inactive' : null,\n  'modifiedBy'\
     \ : null,\n  'modifiedDate' : null,\n  'name' : null,\n  'orgId' : null,\n  'orgRole'\
-    \ : 'PROJECT_MANAGER',\n  'password' : null,\n  'username' : null,\n  'version'\
-    \ : null\n}"
+    \ : 'ADMIN',\n  'password' : null,\n  'username' : null,\n  'version' : null\n\
+    }"
   inactive: false
 assertions:
 - "@StatusCode == 401 OR @StatusCode == 403"

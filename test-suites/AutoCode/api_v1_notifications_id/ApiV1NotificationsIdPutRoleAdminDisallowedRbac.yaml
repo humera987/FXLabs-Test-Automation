@@ -14,7 +14,7 @@ headers:
 - "Content-Type: application/json"
 testCases:
 - id: 1
-  body: "{\n  'accessKey' : null,\n  'account' : {\n    'accountType' : 'Jira',\n\
+  body: "{\n  'accessKey' : null,\n  'account' : {\n    'accountType' : 'GitLab',\n\
     \    'createdBy' : null,\n    'createdDate' : null,\n    'id' : null,\n    'inactive'\
     \ : null,\n    'modifiedBy' : null,\n    'modifiedDate' : null,\n    'name' :\
     \ null,\n    'org' : {\n      'createdBy' : null,\n      'createdDate' : null,\n\
@@ -26,7 +26,7 @@ testCases:
     \  'org' : {\n    'createdBy' : null,\n    'createdDate' : null,\n    'id' : null,\n\
     \    'inactive' : null,\n    'modifiedBy' : null,\n    'modifiedDate' : null,\n\
     \    'name' : null,\n    'version' : null\n  },\n  'secretKey' : null,\n  'token'\
-    \ : null,\n  'type' : 'EMAIL',\n  'version' : null,\n  'visibility' : 'PRIVATE'\n\
+    \ : null,\n  'type' : 'EMAIL',\n  'version' : null,\n  'visibility' : 'ORG_PUBLIC'\n\
     }"
   inactive: false
 assertions:

@@ -17,7 +17,7 @@ testCases:
   body: "{\n  'createdBy' : null,\n  'createdDate' : null,\n  'genPolicy' : 'Create',\n\
     \  'generators' : [ ],\n  'id' : null,\n  'inactive' : null,\n  'modifiedBy' :\
     \ null,\n  'modifiedDate' : null,\n  'openAPISpec' : null,\n  'project' : {\n\
-    \    'account' : {\n      'accountType' : 'BitBucket',\n      'createdBy' : null,\n\
+    \    'account' : {\n      'accountType' : 'AZURE',\n      'createdBy' : null,\n\
     \      'createdDate' : null,\n      'id' : null,\n      'inactive' : null,\n \
     \     'modifiedBy' : null,\n      'modifiedDate' : null,\n      'name' : null,\n\
     \      'org' : {\n        'createdBy' : null,\n        'createdDate' : null,\n\
@@ -25,7 +25,7 @@ testCases:
     \        'modifiedDate' : null,\n        'name' : null,\n        'version' : null\n\
     \      },\n      'region' : null,\n      'version' : null\n    },\n    'autoGenSuites'\
     \ : null,\n    'branch' : null,\n    'createdBy' : null,\n    'createdDate' :\
-    \ null,\n    'description' : null,\n    'genPolicy' : 'None',\n    'id' : null,\n\
+    \ null,\n    'description' : null,\n    'genPolicy' : 'Create',\n    'id' : null,\n\
     \    'inactive' : null,\n    'lastCommit' : null,\n    'lastSync' : null,\n  \
     \  'licenses' : [ ],\n    'modifiedBy' : null,\n    'modifiedDate' : null,\n \
     \   'name' : null,\n    'openAPISpec' : null,\n    'org' : {\n      'createdBy'\

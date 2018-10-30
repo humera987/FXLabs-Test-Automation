@@ -19,7 +19,7 @@ testCases:
     \ 'createdBy' : null,\n    'createdDate' : null,\n    'id' : null,\n    'inactive'\
     \ : null,\n    'modifiedBy' : null,\n    'modifiedDate' : null,\n    'name' :\
     \ null,\n    'version' : null\n  },\n  'orgRole' : 'PROJECT_MANAGER',\n  'status'\
-    \ : 'REMOVED',\n  'users' : {\n    'company' : null,\n    'createdBy' : null,\n\
+    \ : 'INVITED',\n  'users' : {\n    'company' : null,\n    'createdBy' : null,\n\
     \    'createdDate' : null,\n    'email' : null,\n    'id' : null,\n    'inactive'\
     \ : null,\n    'jobTitle' : null,\n    'location' : null,\n    'modifiedBy' :\
     \ null,\n    'modifiedDate' : null,\n    'name' : null,\n    'username' : null,\n\

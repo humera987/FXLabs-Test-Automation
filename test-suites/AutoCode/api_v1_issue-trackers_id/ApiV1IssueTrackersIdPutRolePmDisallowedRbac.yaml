@@ -14,7 +14,7 @@ headers:
 - "Content-Type: application/json"
 testCases:
 - id: 1
-  body: "{\n  'account' : {\n    'accountType' : 'GitLab',\n    'createdBy' : null,\n\
+  body: "{\n  'account' : {\n    'accountType' : 'AWS',\n    'createdBy' : null,\n\
     \    'createdDate' : null,\n    'id' : null,\n    'inactive' : null,\n    'modifiedBy'\
     \ : null,\n    'modifiedDate' : null,\n    'name' : null,\n    'org' : {\n   \
     \   'createdBy' : null,\n      'createdDate' : null,\n      'id' : null,\n   \
@@ -29,8 +29,8 @@ testCases:
     \ : null,\n  'prop3' : null,\n  'prop4' : null,\n  'prop5' : null,\n  'skill'\
     \ : {\n    'createdBy' : null,\n    'createdDate' : null,\n    'id' : null,\n\
     \    'inactive' : null,\n    'modifiedBy' : null,\n    'modifiedDate' : null,\n\
-    \    'name' : null,\n    'version' : null\n  },\n  'state' : 'LAUNCHING',\n  'version'\
-    \ : null,\n  'visibility' : 'PRIVATE'\n}"
+    \    'name' : null,\n    'version' : null\n  },\n  'state' : 'FAILED',\n  'version'\
+    \ : null,\n  'visibility' : 'ORG_PUBLIC'\n}"
   inactive: false
 assertions:
 - "@StatusCode == 401 OR @StatusCode == 403"
