@@ -8,8 +8,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "sla"
   assertions:
@@ -17,7 +17,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -35,7 +35,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -53,7 +53,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -71,7 +71,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -89,7 +89,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -108,7 +108,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: "ROLE_ADMIN,ROLE_PM,ROLE_USER"
     value: null
@@ -127,7 +127,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: "pageSize, page_size, maxResults, max_results"
     value: null
@@ -148,8 +148,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "sql_injection_timebound"
   assertions:
@@ -160,7 +160,7 @@ generators:
   database:
     name: "MySQL"
     version: "5.7"
-  inactive: true
+  inactive: false
   matches: []
   authors: ""
 - type: "log_Forging"
@@ -172,8 +172,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "invalid_datatype"
   assertions:
@@ -182,8 +182,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "special_chars "
   assertions:
@@ -194,8 +194,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "null_value"
   assertions:
@@ -206,8 +206,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "empty_value"
   assertions:
@@ -218,8 +218,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "negative_number"
   assertions:
@@ -228,8 +228,8 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
 - type: "create"
   assertions:
@@ -240,6 +240,6 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: true
-  matches: null
+  inactive: false
+  matches: []
   authors: ""
