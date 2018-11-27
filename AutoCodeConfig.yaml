@@ -5,28 +5,37 @@ generators:
 - type: "no_params"
   assertions:
   - "@StatusCode == 200"
-  tags:
-  - " OWASP - OTG-CONFIG-006"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "sla"
   assertions:
   - "@StatusCode == 200 AND @ResponseTime < 500"
   tags: null
-  severity: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: null
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: ""
 - type: "anonymous_invalid"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP - OTG-AUTHN-002"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -37,20 +46,14 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: ""
 - type: "auth_invalid"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP A2"
-  - "OWASP A5"
-  - "OWASP A6"
-  - "OWASP A7"
-  - "[PIC DSS 3.0] 6.5.8"
-  - "[PIC DSS 3.0] 6.5.10"
-  - "OTG-AUTHN-004"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -61,20 +64,14 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: ""
 - type: "auth_invalid_empty"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP A2"
-  - "OWASP A5"
-  - "OWASP A6"
-  - "OWASP A7"
-  - "[PIC DSS 3.0] 6.5.8"
-  - "[PIC DSS 3.0] 6.5.10"
-  - "OTG-AUTHN-004"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -85,16 +82,14 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: ""
 - type: "auth_invalid_sql"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP A1"
-  - "[PCI DSS 3.0] 6.5.1"
-  - "OTG-AUTHN-004"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -105,15 +100,15 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: ""
 - type: "rbac"
   assertions:
   - "Disallowed:@StatusCode == 401 OR @StatusCode == 403"
   - "Allowed:@StatusCode != 401 AND @StatusCode != 403"
-  tags:
-  - "OWASP - OTG-IDENT-001 "
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: "ROLE_ADMIN,ROLE_PM,ROLE_USER"
     value: null
@@ -124,15 +119,15 @@ generators:
     resourceSamples: "Get:/api/v1/orgs/:Allowed[ROLE_ADMIN]\nPost:/api/v1/accounts/:Allowed[ROLE_ADMIN,ROLE_PM]"
     queryParams: null
     bodyProperties: null
+  authors: ""
 - type: "DDOS"
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
-  tags:
-  - "[PCI DSS 3.0] 6.5.2"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: "pageSize, page_size, maxResults, max_results"
     value: null
@@ -143,81 +138,77 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: ""
 - type: "XSS_Injection"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP A3"
-  - "[PIC DSS 3.0] 6.5.7"
-  - "OWASP - OTG-INPVAL-001"
-  - "OWASP - OTG-INPVAL-002"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "sql_injection_timebound"
   assertions:
   - "@ResponseTime < 7000 OR @ResponseTime > 10000"
   - "@StatusCode != 404"
-  tags:
-  - "OWASP A1"
-  - "[PCI DSS 3.0] 6.5.1"
-  - "OWASP - OTG-INPVAL-005"
-  severity: null
+  tags: null
+  severity: "Major"
   database:
     name: "MySQL"
     version: "5.7"
-  inactive: false
+  inactive: true
   matches: []
+  authors: ""
 - type: "log_Forging"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP - Log Injection"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "invalid_datatype"
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "special_chars "
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "null_value"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "empty_value"
   assertions:
   - "@StatusCode != 200"
@@ -225,29 +216,30 @@ generators:
   - "@StatusCode != 404"
   - "@StatusCode != 500"
   tags: null
-  severity: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "negative_number"
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
 - type: "create"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - " OWASP - OTG-CONFIG-006"
-  severity: null
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches: []
+  inactive: true
+  matches: null
+  authors: ""
