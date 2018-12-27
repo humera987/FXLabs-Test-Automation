@@ -9,7 +9,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "sla"
@@ -147,6 +147,46 @@ generators:
     bodyProperties: null
   authors: ""
   abacResources: null
+- type: "abact2"
+  assertions:
+  - "Create:@StatusCode == 200 OR @StatusCode == 201"
+  - "Disallowed:@StatusCode == 401 OR @StatusCode == 403"
+  tags: null
+  severity: "Major"
+  database: null
+  inactive: true
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: "ORG_B_ADMIN,ORG_B_USER"
+    allowRoles: "ORG_A_USER"
+    pathPatterns: null
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: ""
+  abacResources: null
+- type: "abact3"
+  assertions:
+  - "Create:@StatusCode == 200 OR @StatusCode == 201"
+  - "Disallowed:@StatusCode == 401 OR @StatusCode == 403"
+  tags: null
+  severity: "Major"
+  database: null
+  inactive: true
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: "ORG_B_ADMIN,ORG_B_USER"
+    allowRoles: "ORG_A_USER"
+    pathPatterns: null
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: ""
+  abacResources: null
 - type: "abacpositive"
   assertions:
   - "Create:@StatusCode == 200 OR @StatusCode == 201"
@@ -197,7 +237,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "sql_injection_timebound"
@@ -254,7 +294,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "invalid_datatype"
@@ -265,7 +305,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "special_chars "
@@ -278,7 +318,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "null_value"
@@ -291,7 +331,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "empty_value"
@@ -304,7 +344,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "negative_number"
@@ -315,7 +355,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: []
+  matches: null
   authors: ""
   abacResources: null
 - type: "customize"
