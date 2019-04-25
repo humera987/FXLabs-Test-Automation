@@ -1,0 +1,5485 @@
+openapi: 3.0.1
+info:
+  title: Api Documentation
+  description: Api Documentation
+  termsOfService: 'urn:tos'
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+  version: '1.0'
+servers:
+  - url: //employers-dev.dev-bind.com/
+tags:
+  - name: authentication-resource
+    description: Authentication Resource
+  - name: cache-resource
+    description: Cache Resource
+  - name: employer-resource
+    description: Employer Resource
+  - name: kafka-resource
+    description: Kafka Resource
+  - name: legal-resource
+    description: Legal Resource
+  - name: member-resource
+    description: Member Resource
+  - name: practitioner-resource
+    description: Practitioner Resource
+  - name: routes
+    description: Routes
+  - name: saml-authentication-resource
+    description: Saml Authentication Resource
+  - name: user-resource
+    description: User Resource
+  - name: validation-resource
+    description: Validation Resource
+paths:
+  /access-management/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/auth/login:
+    post:
+      tags:
+        - authentication-resource
+      summary: authenticate
+      operationId: authenticateUsingPOST
+      requestBody:
+        description: loginCredentials
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCredentials'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«JwtToken»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/auth/login-types:
+    post:
+      tags:
+        - authentication-resource
+      summary: getLoginTypes
+      operationId: getLoginTypesUsingPOST
+      requestBody:
+        description: emailAddressDTO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAddressDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«LoginTypeCheckResultDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/auth/refresh:
+    get:
+      tags:
+        - authentication-resource
+      summary: refreshToken
+      operationId: refreshTokenUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«JwtToken»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/auth/self:
+    get:
+      tags:
+        - authentication-resource
+      summary: self
+      operationId: selfUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«SelfDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/employers/accessible:
+    get:
+      tags:
+        - employer-resource
+      summary: getAccessibleEmployers
+      operationId: getAccessibleEmployersUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«EmployerSummaryDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/employers/member-relationship:
+    post:
+      tags:
+        - employer-resource
+      summary: createEmployerMemberRelationships
+      operationId: createEmployerMemberRelationshipsUsingPOST
+      requestBody:
+        description: relationshipMap
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«string»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}':
+    post:
+      tags:
+        - employer-resource
+      summary: saveUserByAccessibleEmployerId
+      operationId: saveUserByAccessibleEmployerIdUsingPOST
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: userDto
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveUserDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«BaseUserDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/coverage-information':
+    get:
+      tags:
+        - employer-resource
+      summary: getCoverageInformationOfEmployer
+      operationId: getCoverageInformationOfEmployerUsingGET
+      parameters:
+        - name: effective-on
+          in: query
+          description: effective-on
+          schema:
+            type: string
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: >-
+                  #/components/schemas/BINDResponse«CoverageInformationOfEmployerDTO»
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/employer-payroll-reports':
+    post:
+      tags:
+        - employer-resource
+      summary: generateNewPayrollReport
+      operationId: generateNewPayrollReportUsingPOST
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+        - name: payroll-schedule-id
+          in: query
+          description: payroll-schedule-id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«FileDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/home':
+    get:
+      tags:
+        - employer-resource
+      summary: homepage
+      operationId: homepageUsingGET
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«EmployerMemberOverviewDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/member-summary':
+    get:
+      tags:
+        - employer-resource
+      summary: findMembers
+      operationId: findMembersUsingGET
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«MemberOnboardingDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/members':
+    get:
+      tags:
+        - employer-resource
+      summary: searchMembers
+      operationId: searchMembersUsingGET
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+        - name: query
+          in: query
+          description: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«MemberDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/payroll-schedules':
+    get:
+      tags:
+        - employer-resource
+      summary: getPayrollSchedules
+      operationId: getPayrollSchedulesUsingGET
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+        - name: returnPeriods
+          in: query
+          description: returnPeriods
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«PayrollScheduleDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/reports':
+    get:
+      tags:
+        - employer-resource
+      summary: getS3Reports
+      operationId: getS3ReportsUsingGET
+      parameters:
+        - name: employer-report-type
+          in: query
+          description: employer-report-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - ALL_PAYROLL_DEDUCTIONS
+              - INVOICE_DETAIL
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+        - name: payroll-schedule-id
+          in: query
+          description: payroll-schedule-id
+          schema:
+            type: string
+        - name: retrieve-past-reports
+          in: query
+          description: retrieve-past-reports
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«FileDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/reports/created-on':
+    get:
+      tags:
+        - employer-resource
+      summary: getReportsByCreatedDate
+      operationId: getReportsByCreatedDateUsingGET
+      parameters:
+        - name: created-date
+          in: query
+          description: created-date
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: employer-report-type
+          in: query
+          description: employer-report-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - ALL_PAYROLL_DEDUCTIONS
+              - INVOICE_DETAIL
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«FileDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/reports/dates':
+    get:
+      tags:
+        - employer-resource
+      summary: getReportCreatedDatesByType
+      operationId: getReportCreatedDatesByTypeUsingGET
+      parameters:
+        - name: employer-report-type
+          in: query
+          description: employer-report-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - ALL_PAYROLL_DEDUCTIONS
+              - INVOICE_DETAIL
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«LocalDate»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/user/{userId}':
+    get:
+      tags:
+        - employer-resource
+      summary: getUserByAccessibleEmployerId
+      operationId: getUserByAccessibleEmployerIdUsingGET
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«CompleteUserDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/user/{userId}/access':
+    post:
+      tags:
+        - employer-resource
+      summary: toggleUserAccess
+      operationId: toggleUserAccessUsingPOST
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: userAccessDTO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAccessDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«BaseUserDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/users':
+    get:
+      tags:
+        - employer-resource
+      summary: getUsers
+      operationId: getUsersUsingGET
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«CompleteUserDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/employers/{employerId}/welcome-emails':
+    post:
+      tags:
+        - employer-resource
+      summary: processSendWelcomeEmails
+      operationId: processSendWelcomeEmailsUsingPOST
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«string»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/kafka/message:
+    post:
+      tags:
+        - kafka-resource
+      summary: sendKafkaMessage
+      operationId: sendKafkaMessageUsingPOST
+      requestBody:
+        description: sendKafkaMessageDTO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendKafkaMessageDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«Void»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/legal/privacy:
+    get:
+      tags:
+        - legal-resource
+      summary: privacyPolicy
+      operationId: privacyPolicyUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«Map«string,string»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/legal/terms:
+    get:
+      tags:
+        - legal-resource
+      summary: terms
+      operationId: termsUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«Map«string,string»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/members:
+    post:
+      tags:
+        - member-resource
+      summary: saveMembers
+      operationId: saveMembersUsingPOST
+      requestBody:
+        description: members
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MemberInputDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«MemberDTO»»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/members/export/{employerId}':
+    get:
+      tags:
+        - member-resource
+      summary: exportAllMembers
+      operationId: exportAllMembersUsingGET
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«FileDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/members/reinstate-subscriber:
+    post:
+      tags:
+        - member-resource
+      summary: reinstateSubscriber
+      operationId: reinstateSubscriberUsingPOST
+      requestBody:
+        description: members
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MemberInputDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«MemberDTO»»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/members/{id}':
+    get:
+      tags:
+        - member-resource
+      summary: getMemberById
+      operationId: getMemberByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«MemberDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - member-resource
+      summary: saveMember
+      operationId: saveMemberUsingPOST
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: member
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberInputDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«MemberDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/members/{id}/future-coverage-information':
+    get:
+      tags:
+        - member-resource
+      summary: getMemberFutureCoverageInformation
+      operationId: getMemberFutureCoverageInformationUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: >-
+                  #/components/schemas/BINDResponse«List«MemberFutureCoverageInformationDTO»»
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/members/{id}/ssn':
+    get:
+      tags:
+        - member-resource
+      summary: getMemberSsnById
+      operationId: getMemberSsnByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«MemberFullSsnDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/practitioners/typeahead/{query}':
+    get:
+      tags:
+        - practitioner-resource
+      summary: getFacilityTypeaheadResults
+      operationId: getFacilityTypeaheadResultsUsingGET
+      parameters:
+        - name: query
+          in: path
+          description: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«TypeaheadDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/users:
+    get:
+      tags:
+        - user-resource
+      summary: getUserByRegistrationToken
+      operationId: getUserByRegistrationTokenUsingGET
+      parameters:
+        - name: registration-token
+          in: query
+          description: registration-token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«BaseUserDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - user-resource
+      summary: addNewUser
+      operationId: addNewUserUsingPOST
+      requestBody:
+        description: newUserInput
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveUserDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«BaseUserDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/users/password-requirements:
+    get:
+      tags:
+        - user-resource
+      summary: getPasswordRequirements
+      operationId: getPasswordRequirementsUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: >-
+                  #/components/schemas/BINDResponse«List«PasswordRequirementDTO»»
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/users/user-creation-info:
+    get:
+      tags:
+        - user-resource
+      summary: getUserCreationInfo
+      operationId: getUserCreationInfoUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«EmployerUserCreationInfoDTO»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/users/{registrationToken}':
+    post:
+      tags:
+        - user-resource
+      summary: createUserAccount
+      operationId: createUserAccountUsingPOST
+      parameters:
+        - name: registrationToken
+          in: path
+          description: registrationToken
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: loginCredentials
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCredentials'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«BaseUserDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v1/users/{userId}/resend-invitation':
+    post:
+      tags:
+        - user-resource
+      summary: resendInvitation
+      operationId: resendInvitationUsingPOST
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«BaseUserDTO»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /api/v1/validation/ssn:
+    post:
+      tags:
+        - validation-resource
+      summary: validateSsn
+      operationId: validateSsnUsingPOST
+      parameters:
+        - name: 'allErrors[0].arguments'
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties: {}
+        - name: 'allErrors[0].code'
+          in: query
+          schema:
+            type: string
+        - name: 'allErrors[0].codes'
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: 'allErrors[0].defaultMessage'
+          in: query
+          schema:
+            type: string
+        - name: 'allErrors[0].objectName'
+          in: query
+          schema:
+            type: string
+        - name: errorCount
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: fieldError.arguments
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties: {}
+        - name: fieldError.bindingFailure
+          in: query
+          schema:
+            type: boolean
+        - name: fieldError.code
+          in: query
+          schema:
+            type: string
+        - name: fieldError.codes
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: fieldError.defaultMessage
+          in: query
+          schema:
+            type: string
+        - name: fieldError.field
+          in: query
+          schema:
+            type: string
+        - name: fieldError.objectName
+          in: query
+          schema:
+            type: string
+        - name: fieldError.rejectedValue
+          in: query
+          schema:
+            type: object
+        - name: fieldErrorCount
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: 'fieldErrors[0].arguments'
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties: {}
+        - name: 'fieldErrors[0].bindingFailure'
+          in: query
+          schema:
+            type: boolean
+        - name: 'fieldErrors[0].code'
+          in: query
+          schema:
+            type: string
+        - name: 'fieldErrors[0].codes'
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: 'fieldErrors[0].defaultMessage'
+          in: query
+          schema:
+            type: string
+        - name: 'fieldErrors[0].field'
+          in: query
+          schema:
+            type: string
+        - name: 'fieldErrors[0].objectName'
+          in: query
+          schema:
+            type: string
+        - name: 'fieldErrors[0].rejectedValue'
+          in: query
+          schema:
+            type: object
+        - name: globalError.arguments
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties: {}
+        - name: globalError.code
+          in: query
+          schema:
+            type: string
+        - name: globalError.codes
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: globalError.defaultMessage
+          in: query
+          schema:
+            type: string
+        - name: globalError.objectName
+          in: query
+          schema:
+            type: string
+        - name: globalErrorCount
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: 'globalErrors[0].arguments'
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties: {}
+        - name: 'globalErrors[0].code'
+          in: query
+          schema:
+            type: string
+        - name: 'globalErrors[0].codes'
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: 'globalErrors[0].defaultMessage'
+          in: query
+          schema:
+            type: string
+        - name: 'globalErrors[0].objectName'
+          in: query
+          schema:
+            type: string
+        - name: nestedPath
+          in: query
+          schema:
+            type: string
+        - name: objectName
+          in: query
+          schema:
+            type: string
+      requestBody:
+        description: input
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SsnDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«string»'
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  '/api/v2/employers/{employerId}/members':
+    get:
+      tags:
+        - employer-resource
+      summary: searchMembers
+      operationId: searchMembersUsingGET_1
+      parameters:
+        - name: employerId
+          in: path
+          description: employerId
+          required: true
+          schema:
+            type: string
+        - name: items-per-page
+          in: query
+          description: items-per-page
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: page
+          in: query
+          description: page
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: query
+          in: query
+          description: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«PageResultDTO«MemberDTO»»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /cache:
+    delete:
+      tags:
+        - cache-resource
+      summary: deleteCaches
+      operationId: deleteCachesUsingDELETE
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«List«CacheDTO»»'
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /home/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /login/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /manage-members/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /public/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /register/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /reports/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /saml/sso-login:
+    get:
+      tags:
+        - saml-authentication-resource
+      summary: ssoLogin
+      operationId: ssoLoginUsingGET
+      requestBody:
+        description: token
+        content:
+          '*/*':
+            schema:
+              type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BINDResponse«JwtToken»'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /terms-and-privacy/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_7
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_7
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_7
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_7
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_7
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_7
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_7
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+  /welcome-emails/**:
+    get:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingGET_8
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    put:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPUT_8
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    post:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPOST_8
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    delete:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingDELETE_8
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    options:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingOPTIONS_8
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    head:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingHEAD_8
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+    patch:
+      tags:
+        - routes
+      summary: index
+      operationId: indexUsingPATCH_8
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '204':
+          description: No Content
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+      deprecated: false
+      security:
+        - APIKey:
+            - global
+components:
+  schemas:
+    LoginTypeCheckResultDTO:
+      title: LoginTypeCheckResultDTO
+      type: object
+      properties:
+        loginInformation:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoginTypeInfoDTO'
+    EmployerSummaryDTO:
+      title: EmployerSummaryDTO
+      type: object
+      properties:
+        employerID:
+          type: string
+        employerName:
+          type: string
+        ssoNameIdLabel:
+          type: string
+    TypeaheadDTO:
+      title: TypeaheadDTO
+      type: object
+      properties:
+        distance:
+          type: number
+          format: double
+        id:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+    BINDResponse«PageResultDTO«MemberDTO»»:
+      title: BINDResponse«PageResultDTO«MemberDTO»»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PageResultDTO«MemberDTO»'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«List«CacheDTO»»:
+      title: BINDResponse«List«CacheDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CacheDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«Void»:
+      title: BINDResponse«Void»
+      type: object
+      properties:
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    Optional«boolean»:
+      title: Optional«boolean»
+      type: object
+      properties:
+        present:
+          type: boolean
+    BINDResponse«BaseUserDTO»:
+      title: BINDResponse«BaseUserDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/BaseUserDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«CompleteUserDTO»:
+      title: BINDResponse«CompleteUserDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CompleteUserDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«List«CompleteUserDTO»»:
+      title: BINDResponse«List«CompleteUserDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompleteUserDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    LoginCredentials:
+      title: LoginCredentials
+      type: object
+      properties:
+        password:
+          type: string
+        username:
+          type: string
+    AuthorityDTO:
+      title: AuthorityDTO
+      type: object
+      properties:
+        name:
+          type: string
+    BINDResponse«List«LocalDate»»:
+      title: BINDResponse«List«LocalDate»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalDate'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    CoreCoverageDTO:
+      title: CoreCoverageDTO
+      type: object
+      properties:
+        cobra:
+          type: boolean
+        coverageEffectiveDate:
+          type: string
+          format: date
+        coverageTerminationDate:
+          type: string
+          format: date
+    BINDResponse«EmployerUserCreationInfoDTO»:
+      title: BINDResponse«EmployerUserCreationInfoDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/EmployerUserCreationInfoDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    CacheDTO:
+      title: CacheDTO
+      type: object
+      properties:
+        objectsCleared:
+          type: integer
+          format: int32
+        owner:
+          type: string
+    MemberStateDTO:
+      title: MemberStateDTO
+      type: object
+      properties:
+        claimId:
+          type: string
+        dateOfService:
+          type: string
+          format: date
+        effectiveDate:
+          type: string
+          format: date-time
+        expirationDate:
+          type: string
+          format: date-time
+        memberId:
+          type: string
+        memberStateName:
+          type: string
+        memberStatePath:
+          type: string
+    BINDResponse«FileDTO»:
+      title: BINDResponse«FileDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FileDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«List«PasswordRequirementDTO»»:
+      title: BINDResponse«List«PasswordRequirementDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PasswordRequirementDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    CompleteUserDTO:
+      title: CompleteUserDTO
+      type: object
+      properties:
+        accessibleEmployerIds:
+          type: array
+          items:
+            type: string
+        accessibleTPAs:
+          type: array
+          items:
+            type: string
+            enum:
+              - BIND
+              - PREFFEREDONE
+        authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorityDTO'
+        carrierId:
+          type: string
+        classCode:
+          type: string
+        email:
+          type: string
+        employerAccessType:
+          type: string
+          enum:
+            - ALL_EMPLOYERS
+            - ALL_EMPLOYERS_EXCEPT_BIND
+            - PLATFORM_ACCESS
+            - SPECIFIC_EMPLOYERS
+        employerGroupId:
+          type: string
+        employerId:
+          type: string
+        employerIds:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
+        firstName:
+          type: string
+        id:
+          type: string
+        isNonLocked:
+          type: boolean
+        lastLoggedInAt:
+          type: string
+          format: date-time
+        lastName:
+          type: string
+        lastPasswordResetInstant:
+          type: string
+          format: date-time
+        loginId:
+          type: string
+        memberId:
+          type: string
+        mfaCellphone:
+          type: string
+        mfaLastAuthenticationDate:
+          type: string
+          format: date-time
+        mfaLastVerificationType:
+          type: string
+          enum:
+            - SMS
+            - PHONE_CALL
+        mfaOptionEnabled:
+          type: boolean
+        mfaUserId:
+          type: string
+        mobilePhoneNumber:
+          type: string
+        organizations:
+          type: array
+          items:
+            type: string
+        passwordResetCode:
+          type: string
+        registrationToken:
+          type: string
+        registrationTokenCreatedAt:
+          type: string
+          format: date-time
+        registrationTokenUsed:
+          type: boolean
+        ssoConfiguration:
+          $ref: '#/components/schemas/SSOConfigurationDTO'
+        ssoProviderId:
+          type: string
+        ssoSubjectId:
+          type: string
+        timezone:
+          type: string
+        username:
+          type: string
+        verificationCode:
+          type: string
+    EmployerUserCreationInfoDTO:
+      title: EmployerUserCreationInfoDTO
+      type: object
+      properties:
+        allEmployers:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployerSummaryDTO'
+        authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorityWithDescriptionDTO'
+        employerAccessOptions:
+          $ref: '#/components/schemas/DisplayValueItemsDTO'
+    MemberFullSsnDTO:
+      title: MemberFullSsnDTO
+      type: object
+      properties:
+        memberId:
+          type: string
+        ssn:
+          type: string
+    MemberFutureCoverageInformationDTO:
+      title: MemberFutureCoverageInformationDTO
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        newClassCode:
+          type: string
+        newCoverageTier:
+          type: string
+        newGroup:
+          type: string
+        newSubGroupCode:
+          type: string
+    NetworkDTO:
+      title: NetworkDTO
+      type: object
+      properties:
+        dataLoaded:
+          type: boolean
+        displayName:
+          type: string
+        fileName:
+          type: string
+        id:
+          type: string
+        message:
+          type: string
+        name:
+          type: string
+        providersFoundMessage:
+          type: string
+        providersFoundUrlName:
+          type: string
+        states:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+        url:
+          type: string
+    BINDResponse«List«MemberDTO»»:
+      title: BINDResponse«List«MemberDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    MemberOnboardingDTO:
+      title: MemberOnboardingDTO
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          format: date
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailDTO'
+        firstName:
+          type: string
+        lastName:
+          type: string
+        memberNumber:
+          type: string
+        memberRelationship:
+          type: string
+          enum:
+            - SPOUSE
+            - PARENT
+            - GRANDPARENT
+            - GRANDCHILD
+            - UNCLE_OR_AUNT
+            - NEPHEW_OR_NIECE
+            - COUSIN
+            - ADOPTED_CHILD
+            - FOSTER_CHILD
+            - CHILD_IN_LAW
+            - SIBLING_IN_LAW
+            - PARENT_IN_LAW
+            - SIBLING
+            - WARD
+            - STEPCHILD
+            - SELF
+            - CHILD
+            - SPONSORED_DEPENDENT
+            - DEPENDENT_OF_A_MINOR_DEPENDENT
+            - EX_SPOUSE
+            - GUARDIAN
+            - COURT_APPOINTED_GUARDIAN
+            - MOTHER
+            - FATHER
+            - CHILD_OF_A_DOMESTIC_PARTNER
+            - STEPFATHER
+            - STEPMOTHER
+            - DOMESTIC_PARTNER
+            - ANNUITANT
+            - TRUSTEE
+            - OTHER_RELATIONSHIP
+            - OTHER_RELATIVE
+        onboardingState:
+          type: string
+        primaryEmail:
+          type: string
+    SearchAddressDTO:
+      title: SearchAddressDTO
+      type: object
+      properties:
+        city:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        state:
+          type: string
+        zipCode:
+          type: string
+    SwitchUserGrantedAuthorityDTO:
+      title: SwitchUserGrantedAuthorityDTO
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        principalId:
+          type: string
+        role:
+          type: string
+        sourceName:
+          type: string
+        sourcePrincipalAuthorities:
+          type: array
+          items:
+            type: string
+    AddressDTO:
+      title: AddressDTO
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        faxNumber:
+          type: string
+        id:
+          type: string
+        latitude:
+          type: number
+          format: double
+        line1:
+          type: string
+        line2:
+          type: string
+        longitude:
+          type: number
+          format: double
+        primaryPhoneNumber:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+          enum:
+            - ENROLLMENT
+            - SEARCH_DEFAULT
+        zipCode:
+          type: string
+        zipFirst5:
+          type: string
+        zipPlus:
+          type: string
+    BINDResponse«List«MemberOnboardingDTO»»:
+      title: BINDResponse«List«MemberOnboardingDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberOnboardingDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«SelfDTO»:
+      title: BINDResponse«SelfDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SelfDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    UserAccessDTO:
+      title: UserAccessDTO
+      type: object
+      properties:
+        enableAccess:
+          type: boolean
+    AuthorityWithDescriptionDTO:
+      title: AuthorityWithDescriptionDTO
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+    BINDResponse«LoginTypeCheckResultDTO»:
+      title: BINDResponse«LoginTypeCheckResultDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/LoginTypeCheckResultDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    SubGroupCodeDTO:
+      title: SubGroupCodeDTO
+      type: object
+      properties:
+        code:
+          type: string
+        delete:
+          type: boolean
+        description:
+          type: string
+        employerId:
+          type: string
+        id:
+          type: string
+    BINDResponse«List«EmployerSummaryDTO»»:
+      title: BINDResponse«List«EmployerSummaryDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployerSummaryDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BaseUserDTO:
+      title: BaseUserDTO
+      type: object
+      properties:
+        accessibleEmployerIds:
+          type: array
+          items:
+            type: string
+        accessibleTPAs:
+          type: array
+          items:
+            type: string
+            enum:
+              - BIND
+              - PREFFEREDONE
+        authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorityDTO'
+        carrierId:
+          type: string
+        employerAccessType:
+          type: string
+          enum:
+            - ALL_EMPLOYERS
+            - ALL_EMPLOYERS_EXCEPT_BIND
+            - PLATFORM_ACCESS
+            - SPECIFIC_EMPLOYERS
+        employerGroupId:
+          type: string
+        employerId:
+          type: string
+        employerIds:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
+        firstName:
+          type: string
+        id:
+          type: string
+        lastLoggedInAt:
+          type: string
+          format: date-time
+        lastName:
+          type: string
+        loginId:
+          type: string
+        memberId:
+          type: string
+        mobilePhoneNumber:
+          type: string
+        organizations:
+          type: array
+          items:
+            type: string
+        timezone:
+          type: string
+    ClassCodeDTO:
+      title: ClassCodeDTO
+      type: object
+      properties:
+        code:
+          type: string
+        delete:
+          type: boolean
+        description:
+          type: string
+        employerId:
+          type: string
+        id:
+          type: string
+    BINDResponse«EmployerMemberOverviewDTO»:
+      title: BINDResponse«EmployerMemberOverviewDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/EmployerMemberOverviewDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    EmailAddressDTO:
+      title: EmailAddressDTO
+      type: object
+      properties:
+        email:
+          type: string
+    MemberDTO:
+      title: MemberDTO
+      type: object
+      properties:
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+        business:
+          type: string
+        company:
+          type: string
+        coreCoverage:
+          $ref: '#/components/schemas/MemberCoverageDTO'
+        dateOfBirth:
+          type: string
+          format: date
+        dependent:
+          type: boolean
+        dependents:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberDTO'
+        deviceTokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceTokenDTO'
+        division:
+          type: string
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailDTO'
+        employeeNumber:
+          type: string
+        employerClassCode:
+          type: string
+        employerGroupId:
+          type: string
+        employerId:
+          type: string
+        employerSubgroupId:
+          type: string
+        employmentStatus:
+          type: string
+        firstName:
+          type: string
+        gender:
+          type: string
+        grantedPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberPermissionDTO'
+        handicapped:
+          type: boolean
+        hireDate:
+          type: string
+          format: date
+        id:
+          type: string
+        inInitialState:
+          type: boolean
+        individualNumber:
+          type: string
+        isHandicapped:
+          type: boolean
+        lastFourSSN:
+          type: string
+        lastName:
+          type: string
+        location:
+          type: string
+        maritalStatus:
+          type: string
+        memberCoverages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberCoverageDTO'
+        memberNumber:
+          type: string
+        memberNumberSuffix:
+          type: string
+        memberRelationship:
+          type: string
+        memberRelationshipCode:
+          type: string
+        memberStates:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberStateDTO'
+        middleName:
+          type: string
+        onboardingState:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberPermissionDTO'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneDTO'
+        planCode:
+          type: string
+        prefix:
+          type: string
+        primaryEmail:
+          type: string
+        primaryPhoneNumber:
+          type: string
+        registrationToken:
+          type: string
+        relationToSubscriber:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        self:
+          type: boolean
+        spouse:
+          type: boolean
+        ssn:
+          type: string
+        studentStatus:
+          type: string
+        subscriberDateOfBirth:
+          type: string
+          format: date
+        subscriberFirstName:
+          type: string
+        subscriberId:
+          type: string
+        subscriberLastName:
+          type: string
+        suffix:
+          type: string
+        tpa:
+          type: string
+        zipCode:
+          type: string
+    SsnDTO:
+      title: SsnDTO
+      type: object
+      properties:
+        employerId:
+          type: string
+        memberId:
+          type: string
+        ssn:
+          type: string
+        ssnWithoutDashes:
+          type: string
+    BINDResponse«CoverageInformationOfEmployerDTO»:
+      title: BINDResponse«CoverageInformationOfEmployerDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CoverageInformationOfEmployerDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«List«TypeaheadDTO»»:
+      title: BINDResponse«List«TypeaheadDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TypeaheadDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    EmployerTierDTO:
+      title: EmployerTierDTO
+      type: object
+      properties:
+        alias:
+          type: string
+        delete:
+          type: boolean
+        description:
+          type: string
+        employerId:
+          type: string
+        id:
+          type: string
+        tier:
+          type: string
+          enum:
+            - SUBSCRIBER_ONLY
+            - SUBSCRIBER_AND_SPOUSE
+            - SUBSCRIBER_AND_CHILDREN
+            - FAMILY
+            - SUBSCRIBER_AND_ONE_DEPENDENT
+            - SUBSCRIBER_AND_TWO_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_DEPENDENTS
+            - SUBSCRIBER_AND_ONE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_TWO_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FOUR_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FIVE_OR_MORE_DEPENDENTS
+    CoverageInformationOfEmployerDTO:
+      title: CoverageInformationOfEmployerDTO
+      type: object
+      properties:
+        classCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassCodeDTO'
+        groupNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupNumberDTO'
+        memberRelationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployerMemberRelationshipDTO'
+        planCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanCodeDTO'
+        subGroupCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubGroupCodeDTO'
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployerTierDTO'
+    PhoneDTO:
+      title: PhoneDTO
+      type: object
+      properties:
+        countryCode:
+          type: string
+        extension:
+          type: string
+        id:
+          type: string
+        isPrimary:
+          type: boolean
+        phoneNumber:
+          type: string
+        phoneType:
+          type: string
+    BINDResponse«List«MemberFutureCoverageInformationDTO»»:
+      title: BINDResponse«List«MemberFutureCoverageInformationDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberFutureCoverageInformationDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    DisplayValueItemsDTO:
+      title: DisplayValueItemsDTO
+      type: object
+      properties:
+        display:
+          type: array
+          items:
+            type: string
+        value:
+          type: array
+          items:
+            type: string
+    PayrollPeriodDTO:
+      title: PayrollPeriodDTO
+      type: object
+      properties:
+        checkDate:
+          type: string
+          format: date
+        cutoffDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        id:
+          type: string
+        payrollScheduleId:
+          type: string
+        startDate:
+          type: string
+          format: date
+    EmployerMemberOverviewDTO:
+      title: EmployerMemberOverviewDTO
+      type: object
+      properties:
+        membersByTier:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployerMemberOverviewRowDTO'
+        membersByType:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployerMemberOverviewRowDTO'
+        totalMembers:
+          type: integer
+          format: int32
+    'BINDResponse«Map«string,string»»':
+      title: 'BINDResponse«Map«string,string»»'
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: string
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    SSOConfigurationDTO:
+      title: SSOConfigurationDTO
+      type: object
+      properties:
+        globalLogoutTimeoutUrl:
+          type: string
+        globalLogoutUrl:
+          type: string
+    SelfDTO:
+      title: SelfDTO
+      type: object
+      properties:
+        benefitType:
+          type: string
+        carrierId:
+          type: string
+        emailVerificationRequired:
+          type: boolean
+        employerGroupId:
+          type: string
+        employerId:
+          type: string
+        firstName:
+          type: string
+        impersonatorUserId:
+          type: string
+        lastName:
+          type: string
+        memberId:
+          type: string
+        mfaSetupRequired:
+          type: boolean
+        networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkDTO'
+        organizations:
+          type: array
+          items:
+            type: string
+        policyId:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        searchAddress:
+          $ref: '#/components/schemas/SearchAddressDTO'
+        ssoConfiguration:
+          $ref: '#/components/schemas/SSOConfigurationDTO'
+        sub:
+          type: string
+        switchUserAuthority:
+          $ref: '#/components/schemas/SwitchUserGrantedAuthorityDTO'
+        theme:
+          type: string
+        userId:
+          type: string
+        username:
+          type: string
+    EmployerMemberRelationshipDTO:
+      title: EmployerMemberRelationshipDTO
+      type: object
+      properties:
+        delete:
+          type: boolean
+        description:
+          type: string
+        employerId:
+          type: string
+        id:
+          type: string
+        memberRelationship:
+          type: string
+          enum:
+            - SPOUSE
+            - PARENT
+            - GRANDPARENT
+            - GRANDCHILD
+            - UNCLE_OR_AUNT
+            - NEPHEW_OR_NIECE
+            - COUSIN
+            - ADOPTED_CHILD
+            - FOSTER_CHILD
+            - CHILD_IN_LAW
+            - SIBLING_IN_LAW
+            - PARENT_IN_LAW
+            - SIBLING
+            - WARD
+            - STEPCHILD
+            - SELF
+            - CHILD
+            - SPONSORED_DEPENDENT
+            - DEPENDENT_OF_A_MINOR_DEPENDENT
+            - EX_SPOUSE
+            - GUARDIAN
+            - COURT_APPOINTED_GUARDIAN
+            - MOTHER
+            - FATHER
+            - CHILD_OF_A_DOMESTIC_PARTNER
+            - STEPFATHER
+            - STEPMOTHER
+            - DOMESTIC_PARTNER
+            - ANNUITANT
+            - TRUSTEE
+            - OTHER_RELATIONSHIP
+            - OTHER_RELATIVE
+    EmployerMemberOverviewRowDTO:
+      title: EmployerMemberOverviewRowDTO
+      type: object
+      properties:
+        count:
+          type: number
+          format: double
+        name:
+          type: string
+    PlanCodeDTO:
+      title: PlanCodeDTO
+      type: object
+      properties:
+        code:
+          type: string
+        delete:
+          type: boolean
+        description:
+          type: string
+        employerId:
+          type: string
+        id:
+          type: string
+    BINDResponse«JwtToken»:
+      title: BINDResponse«JwtToken»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JwtToken'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    LoginTypeInfoDTO:
+      title: LoginTypeInfoDTO
+      type: object
+      properties:
+        loginType:
+          type: string
+          enum:
+            - SAML_SSO
+            - BIND_AUTH
+        ssoProviderEntityId:
+          type: string
+        ssoProviderName:
+          type: string
+    BINDResponse«List«PayrollScheduleDTO»»:
+      title: BINDResponse«List«PayrollScheduleDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayrollScheduleDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«MemberDTO»:
+      title: BINDResponse«MemberDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MemberDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    BINDResponse«MemberFullSsnDTO»:
+      title: BINDResponse«MemberFullSsnDTO»
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MemberFullSsnDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    FileDTO:
+      title: FileDTO
+      type: object
+      properties:
+        createdDate:
+          type: string
+          format: date
+        file:
+          pattern: '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+          type: string
+          format: byte
+        name:
+          type: string
+    GroupNumberDTO:
+      title: GroupNumberDTO
+      type: object
+      properties:
+        code:
+          type: string
+        crosswalkGroupNumber:
+          type: string
+        delete:
+          type: boolean
+        description:
+          type: string
+        employerId:
+          type: string
+        id:
+          type: string
+        pbmAccountCode:
+          type: string
+        pbmGroupId:
+          type: string
+        pbmNetworkContractId:
+          type: string
+    MemberPermissionDTO:
+      title: MemberPermissionDTO
+      type: object
+      properties:
+        approved:
+          type: boolean
+        granterFirstName:
+          type: string
+        granterLastName:
+          type: string
+        granterMemberId:
+          type: string
+        permissionLevel:
+          type: string
+          enum:
+            - VIEW
+            - CREATE
+            - EDIT
+            - DELETE
+        permissionType:
+          type: string
+          enum:
+            - UPGRADES
+            - CLAIMS
+            - PERSONAL_INFO
+        requesterFirstName:
+          type: string
+        requesterLastName:
+          type: string
+        requesterMemberId:
+          type: string
+    PayrollScheduleDTO:
+      title: PayrollScheduleDTO
+      type: object
+      properties:
+        delete:
+          type: boolean
+        description:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        id:
+          type: string
+        name:
+          type: string
+        payrollScheduleType:
+          type: string
+          enum:
+            - BI_WEEKLY
+            - WEEKLY
+            - MONTHLY_START
+            - MONTHLY_END
+            - SEMI_MONTHLY
+        periods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayrollPeriodDTO'
+        termDate:
+          type: string
+          format: date
+    PasswordRequirementDTO:
+      title: PasswordRequirementDTO
+      type: object
+      properties:
+        description:
+          type: string
+        display:
+          type: boolean
+        failRegex:
+          type: string
+    BINDResponse«List«FileDTO»»:
+      title: BINDResponse«List«FileDTO»»
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileDTO'
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    SendKafkaMessageDTO:
+      title: SendKafkaMessageDTO
+      type: object
+      properties:
+        messageJson:
+          type: string
+        modelClass:
+          type: string
+        topicName:
+          type: string
+    TermDateNoticeDTO:
+      title: TermDateNoticeDTO
+      type: object
+      properties:
+        memberCoverageId:
+          type: string
+        vendor:
+          type: string
+          enum:
+            - PREFERRED_ONE
+            - SDS
+            - BIND
+            - NAVITUS
+            - RED_CARD
+            - SECOND_MD
+            - UMR
+            - QC
+            - CLEO
+            - VIRGINPULSE
+            - ALIGHT
+            - PREFERRED_ONE_REPRICER
+    JwtToken:
+      title: JwtToken
+      type: object
+      properties:
+        id_token:
+          type: string
+        mfa_setup_required:
+          $ref: '#/components/schemas/Optional«boolean»'
+        needsVerification:
+          type: boolean
+        refresh_token:
+          type: string
+    'Map«string,string»':
+      title: 'Map«string,string»'
+      type: object
+      additionalProperties:
+        type: string
+    BINDResponse«string»:
+      title: BINDResponse«string»
+      type: object
+      properties:
+        data:
+          type: string
+        message:
+          type: string
+        meta:
+          type: object
+          properties: {}
+    PageInfoDTO:
+      title: PageInfoDTO
+      type: object
+      properties:
+        itemsPerPage:
+          type: integer
+          format: int32
+        pageNumber:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+    EnrollmentChangeDTO:
+      title: EnrollmentChangeDTO
+      type: object
+      properties:
+        changeType:
+          type: string
+          enum:
+            - ADD
+            - TERMINATE
+            - UPDATE
+        changedScopes:
+          type: string
+        employerGroupPlanId:
+          type: string
+        enrollmentType:
+          type: string
+        id:
+          type: string
+        memberCoverageId:
+          type: string
+        memberRelationship:
+          type: string
+          enum:
+            - SPOUSE
+            - PARENT
+            - GRANDPARENT
+            - GRANDCHILD
+            - UNCLE_OR_AUNT
+            - NEPHEW_OR_NIECE
+            - COUSIN
+            - ADOPTED_CHILD
+            - FOSTER_CHILD
+            - CHILD_IN_LAW
+            - SIBLING_IN_LAW
+            - PARENT_IN_LAW
+            - SIBLING
+            - WARD
+            - STEPCHILD
+            - SELF
+            - CHILD
+            - SPONSORED_DEPENDENT
+            - DEPENDENT_OF_A_MINOR_DEPENDENT
+            - EX_SPOUSE
+            - GUARDIAN
+            - COURT_APPOINTED_GUARDIAN
+            - MOTHER
+            - FATHER
+            - CHILD_OF_A_DOMESTIC_PARTNER
+            - STEPFATHER
+            - STEPMOTHER
+            - DOMESTIC_PARTNER
+            - ANNUITANT
+            - TRUSTEE
+            - OTHER_RELATIONSHIP
+            - OTHER_RELATIVE
+        newAddressLine1:
+          type: string
+        newAddressLine2:
+          type: string
+        newCity:
+          type: string
+        newClassCode:
+          type: string
+        newDateOfBirth:
+          type: string
+          format: date
+        newEffectiveDate:
+          type: string
+          format: date
+        newEmployerGroupId:
+          type: string
+        newFirstName:
+          type: string
+        newGender:
+          type: string
+          enum:
+            - MALE
+            - FEMALE
+            - UNKNOWN
+            - INTERSEX
+        newGroupNumber:
+          type: string
+        newLastName:
+          type: string
+        newMiddleName:
+          type: string
+        newPlanCode:
+          type: string
+        newStateCode:
+          type: string
+          enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MD
+            - MH
+            - MA
+            - MI
+            - FM
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VA
+            - VI
+            - WA
+            - WV
+            - WI
+            - WY
+        newSubGroupCode:
+          type: string
+        newTermDate:
+          type: string
+          format: date
+        newTier:
+          type: string
+          enum:
+            - SUBSCRIBER_ONLY
+            - SUBSCRIBER_AND_SPOUSE
+            - SUBSCRIBER_AND_CHILDREN
+            - FAMILY
+            - SUBSCRIBER_AND_ONE_DEPENDENT
+            - SUBSCRIBER_AND_TWO_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_DEPENDENTS
+            - SUBSCRIBER_AND_ONE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_TWO_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FOUR_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FIVE_OR_MORE_DEPENDENTS
+        newZipCode:
+          type: string
+        oldAddressLine1:
+          type: string
+        oldAddressLine2:
+          type: string
+        oldCity:
+          type: string
+        oldClassCode:
+          type: string
+        oldDateOfBirth:
+          type: string
+          format: date
+        oldEffectiveDate:
+          type: string
+          format: date
+        oldEmployerGroupId:
+          type: string
+        oldFirstName:
+          type: string
+        oldGender:
+          type: string
+          enum:
+            - MALE
+            - FEMALE
+            - UNKNOWN
+            - INTERSEX
+        oldGroupNumber:
+          type: string
+        oldLastName:
+          type: string
+        oldMiddleName:
+          type: string
+        oldPlanCode:
+          type: string
+        oldStateCode:
+          type: string
+          enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MD
+            - MH
+            - MA
+            - MI
+            - FM
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VA
+            - VI
+            - WA
+            - WV
+            - WI
+            - WY
+        oldSubGroupCode:
+          type: string
+        oldTermDate:
+          type: string
+          format: date
+        oldTier:
+          type: string
+          enum:
+            - SUBSCRIBER_ONLY
+            - SUBSCRIBER_AND_SPOUSE
+            - SUBSCRIBER_AND_CHILDREN
+            - FAMILY
+            - SUBSCRIBER_AND_ONE_DEPENDENT
+            - SUBSCRIBER_AND_TWO_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_DEPENDENTS
+            - SUBSCRIBER_AND_ONE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_TWO_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FOUR_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FIVE_OR_MORE_DEPENDENTS
+        oldZipCode:
+          type: string
+        receivedDate:
+          type: string
+          format: date
+        subscriberDateOfBirth:
+          type: string
+          format: date
+        subscriberEnrollmentAddressState:
+          type: string
+          enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MD
+            - MH
+            - MA
+            - MI
+            - FM
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VA
+            - VI
+            - WA
+            - WV
+            - WI
+            - WY
+        subscriberFirstName:
+          type: string
+        subscriberId:
+          type: string
+        subscriberLastName:
+          type: string
+        subscriberSSN:
+          type: string
+    SaveUserDTO:
+      title: SaveUserDTO
+      type: object
+      properties:
+        accessibleEmployerIds:
+          type: array
+          items:
+            type: string
+        accessibleTPAs:
+          type: array
+          items:
+            type: string
+            enum:
+              - BIND
+              - PREFFEREDONE
+        authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorityDTO'
+        carrierId:
+          type: string
+        email:
+          type: string
+        employerAccessType:
+          type: string
+          enum:
+            - ALL_EMPLOYERS
+            - ALL_EMPLOYERS_EXCEPT_BIND
+            - PLATFORM_ACCESS
+            - SPECIFIC_EMPLOYERS
+        firstName:
+          type: string
+        id:
+          type: string
+        lastName:
+          type: string
+        mobilePhoneNumber:
+          type: string
+        ssoProviderId:
+          type: string
+        ssoSubjectId:
+          type: string
+    EmailDTO:
+      title: EmailDTO
+      type: object
+      properties:
+        email:
+          type: string
+        id:
+          type: string
+        primary:
+          type: boolean
+        type:
+          type: string
+          enum:
+            - ENROLLMENT
+            - OTHER
+    PageResultDTO«MemberDTO»:
+      title: PageResultDTO«MemberDTO»
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberDTO'
+        meta:
+          type: object
+          properties: {}
+        pageInfo:
+          $ref: '#/components/schemas/PageInfoDTO'
+    DeviceTokenDTO:
+      title: DeviceTokenDTO
+      type: object
+      properties:
+        appPlatform:
+          type: string
+          enum:
+            - ANDROID
+            - IOS
+        endpointArn:
+          type: string
+        token:
+          type: string
+    MemberCoverageDTO:
+      title: MemberCoverageDTO
+      type: object
+      properties:
+        addInStatus:
+          type: string
+          enum:
+            - GRACE
+            - PENDING_APPROVAL
+            - ACTIVE
+            - SAVED
+            - EXPIRED
+            - CANCELED
+            - DENIED
+            - DELETED
+            - COBRA_PAYMENT
+        attestationVersion:
+          type: string
+        benefitType:
+          type: string
+          enum:
+            - ACTIVE
+            - COBRA
+        classCode:
+          type: string
+        coPay:
+          type: number
+          format: double
+        confirmationNumber:
+          type: string
+        coreStatus:
+          type: string
+          enum:
+            - ACTIVE
+            - PENDING
+            - TERMINATED
+            - COBRA
+        coreStatusDescription:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        currentPayrollPeriod:
+          type: integer
+          format: int32
+        dateOfService:
+          type: string
+          format: date
+        effectiveDate:
+          type: string
+          format: date
+        employerGroupId:
+          type: string
+        employerGroupPlanId:
+          type: string
+        enrollmentChanges:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentChangeDTO'
+        firstPayrollPeriodCheckDate:
+          type: string
+          format: date
+        groupNumber:
+          type: string
+        id:
+          type: string
+        isCoreCoverage:
+          type: boolean
+        isCurrentlyEffective:
+          type: boolean
+        isTermsAccepted:
+          type: boolean
+        lastPayrollPeriodCheckDate:
+          type: string
+          format: date
+        memberFirstName:
+          type: string
+        memberId:
+          type: string
+        memberLastName:
+          type: string
+        networkProviderId:
+          type: string
+        payrollDeduction:
+          type: number
+          format: double
+        payrollDeductionCount:
+          type: number
+          format: double
+        policyCoverageFamilyId:
+          type: string
+        policyId:
+          type: string
+        purchasedDate:
+          type: string
+          format: date
+        requestedDate:
+          type: string
+          format: date
+        sku:
+          type: string
+        subGroupCode:
+          type: string
+        termDate:
+          type: string
+          format: date
+        termDateNotices:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermDateNoticeDTO'
+        tier:
+          type: string
+          enum:
+            - SUBSCRIBER_ONLY
+            - SUBSCRIBER_AND_SPOUSE
+            - SUBSCRIBER_AND_CHILDREN
+            - FAMILY
+            - SUBSCRIBER_AND_ONE_DEPENDENT
+            - SUBSCRIBER_AND_TWO_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_DEPENDENTS
+            - SUBSCRIBER_AND_ONE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_TWO_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_THREE_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FOUR_OR_MORE_DEPENDENTS
+            - SUBSCRIBER_AND_FIVE_OR_MORE_DEPENDENTS
+        totalCost:
+          type: number
+          format: double
+        totalInNetworkOutOfPocket:
+          type: number
+          format: double
+        totalInNetworkOutOfPocketFamily:
+          type: number
+          format: double
+        totalOutOfNetworkOutOfPocket:
+          type: number
+          format: double
+        totalOutOfNetworkOutOfPocketFamily:
+          type: number
+          format: double
+        totalOutOfPocket:
+          type: number
+          format: double
+        totalOutOfPocketFamily:
+          type: number
+          format: double
+        willBeEffectiveInTheFuture:
+          type: boolean
+    MemberInputDTO:
+      title: MemberInputDTO
+      type: object
+      properties:
+        addDependant:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/AddressDTO'
+        business:
+          type: string
+        cancelCoverage:
+          type: boolean
+        classCode:
+          type: string
+        company:
+          type: string
+        coreCoverage:
+          $ref: '#/components/schemas/CoreCoverageDTO'
+        dateOfBirth:
+          type: string
+          format: date
+        dependentSSN:
+          type: string
+        division:
+          type: string
+        editingDependent:
+          type: boolean
+        editingSubscriber:
+          type: boolean
+        email:
+          type: string
+        employeeNumber:
+          type: string
+        employeeSSN:
+          type: string
+        firstName:
+          type: string
+        gender:
+          type: string
+          enum:
+            - MALE
+            - FEMALE
+            - UNKNOWN
+            - INTERSEX
+        groupNumber:
+          type: string
+        hireDate:
+          type: string
+          format: date
+        id:
+          type: string
+        isDisabled:
+          type: boolean
+        isEmployed:
+          type: boolean
+        isStudent:
+          type: boolean
+        lastName:
+          type: string
+        location:
+          type: string
+        maritalStatus:
+          type: string
+          enum:
+            - DOMESTIC_PARTNER
+            - DIVORCED
+            - SINGLE
+            - MARRIED
+            - UNREPORTED
+            - SEPARATED
+            - UNMARRIED
+            - WIDOWED
+            - LEGALLY_SEPARATED
+        middleName:
+          type: string
+        phoneNumber:
+          type: string
+        planCode:
+          type: string
+        planType:
+          type: string
+        prefix:
+          type: string
+          enum:
+            - Mr
+            - Mrs
+            - Ms
+            - Miss
+            - Dr
+        reinstateDependentCoverage:
+          type: boolean
+        relationship:
+          type: string
+          enum:
+            - SPOUSE
+            - PARENT
+            - GRANDPARENT
+            - GRANDCHILD
+            - UNCLE_OR_AUNT
+            - NEPHEW_OR_NIECE
+            - COUSIN
+            - ADOPTED_CHILD
+            - FOSTER_CHILD
+            - CHILD_IN_LAW
+            - SIBLING_IN_LAW
+            - PARENT_IN_LAW
+            - SIBLING
+            - WARD
+            - STEPCHILD
+            - SELF
+            - CHILD
+            - SPONSORED_DEPENDENT
+            - DEPENDENT_OF_A_MINOR_DEPENDENT
+            - EX_SPOUSE
+            - GUARDIAN
+            - COURT_APPOINTED_GUARDIAN
+            - MOTHER
+            - FATHER
+            - CHILD_OF_A_DOMESTIC_PARTNER
+            - STEPFATHER
+            - STEPMOTHER
+            - DOMESTIC_PARTNER
+            - ANNUITANT
+            - TRUSTEE
+            - OTHER_RELATIONSHIP
+            - OTHER_RELATIVE
+        rowNumber:
+          type: integer
+          format: int32
+        ssn:
+          type: string
+        subGroupCode:
+          type: string
+        suffix:
+          type: string
+          enum:
+            - Sr
+            - Jr
+            - I
+            - II
+            - III
+        temporarySsn:
+          type: boolean
+        terminatingCoreCoverage:
+          type: boolean
+        updateCoverage:
+          type: boolean
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      name: api_key
+      in: header
